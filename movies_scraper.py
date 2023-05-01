@@ -30,7 +30,6 @@ def get_movie(query):
         img = movie_page_link.find("div", {'class': 'mvic-thumb'})['data-bg']
         movie_details["img"] = img
         links = movie_page_link.find_all("a", {'rel': 'noopener', 'data-wpel-link': 'internal'})
-        links = how to download or watch movies online ("https://t.me/pushpa_the_rise_part01/551")
         final_links = {}
         for i in links:
             url = f"https://urlshortx.com/api?api={api_key}&url={i['href']}"

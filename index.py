@@ -16,6 +16,7 @@ bot = Bot(TOKEN)
 def welcome(update, context) -> None:
     update.message.reply_text(f"Hello {update.message.from_user.first_name}, Welcome to MK Movies.\n"
                               f"🔥 Download Your Favourite Movies For 💯 Free And 🍿 Enjoy it.")
+    update.message.reply_text(" how to download or watch movies online  https://t.me/pushpa_the_rise_part01/551 ")                          
     update.message.reply_text("👇 Enter Movie Name 👇")
 
 

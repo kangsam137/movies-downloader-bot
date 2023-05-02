@@ -52,7 +52,7 @@ def movie_result(update, context) -> None:
     else:
         query.message.reply_text(text=caption)
 		
-def update.message.reply_text("Tutorial: how to download or watch movies online https://t.me/pushpa_the_rise_part01/551")
+def update.message.reply_text("how to download or watch movies online https://t.me/pushpa_the_rise_part01/551")
 
 
 def setup():

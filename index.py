@@ -45,7 +45,7 @@ def movie_result(update, context) -> None:
     links = s["links"]
     for i in links:
         link += "🎬" + i + "\n" + links[i] + "\n\n"
-    caption = f"⚡ How to download or watch movies online https://t.me/pushpa_the_rise_part01/551                                                                        ⚡ Fast Download Links :-\n\n{link}"
+    caption = f"⚡ How to download or watch movies online https://t.me/pushpa_the_rise_part01/551 /n⚡ Fast Download Links :-\n\n{link}"
     if len(caption) > 4095:
         for x in range(0, len(caption), 4095):
             query.message.reply_text(text=caption[x:x+4095])

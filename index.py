@@ -1,5 +1,5 @@
 import os
-from io import MbsIO
+from io import BytesIO
 from queue import Queue
 import requests
 from flask import Flask, request
@@ -39,7 +39,7 @@ def movie_result(update, context) -> None:
     query = update.callback_query
     s = get_movie(query.data)
     response = requests.get(s["img"])
-    img = MbsIO(response.content)
+    img = BytesIO(response.content)
     query.message.reply_photo(photo=img, caption=f"🎥 {s['title']}")
     link = ""
     links = s["links"]

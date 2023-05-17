@@ -2,19 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 import telegram 
 
-# Telegram Bot credentials
-bot_token = "6041460703:AAEZPbFgnImdBhslrns2MBfUIu4hAuvdl68"
-chat_id = "1168046950"
+
+url_list = {}
+api_key = "4adb2be7f085a8dd88d3328d2aed1e958a7ce535"
 
 
-# Function to send a message to the Telegram bot
-def send_message(message):
-    bot = telegram.Bot(token=bot_token)
-    bot.send_message(chat_id=chat_id, text=message)
-
-
-
-# Function to search for movies
 def search_movies(query):
     movies_list = []
     movies_details = {}
@@ -30,7 +22,6 @@ def search_movies(query):
     return movies_list
 
 
-# Function to get movie details
 def get_movie(query):
     movie_details = {}
     movie_page_link = BeautifulSoup(requests.get(f"{url_list[query]}").text, "html.parser")

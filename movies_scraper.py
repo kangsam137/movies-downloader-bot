@@ -13,14 +13,6 @@ def send_message(message):
     bot.send_message(chat_id=chat_id, text=message)
 
 
-# Function to upload a movie to the Telegram bot
-def upload_movie(movie_details):
-    bot = telegram.Bot(token=bot_token)
-    caption = f"{movie_details['title']}\n\n"
-    for title, link in movie_details['links'].items():
-        caption += f"{title}: {link}\n"
-    bot.send_photo(chat_id=chat_id, photo=movie_details['img'], caption=caption)
-
 
 # Function to search for movies
 def search_movies(query):

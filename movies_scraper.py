@@ -50,6 +50,8 @@ def get_movie(query):
         links = movie_page_link.find_all("a", {'rel': 'noopener', 'data-wpel-link': 'internal'})
         final_links = {}
         for i in links:
+		response = requests.get(url)
+            link = response.json()
             final_links[i.text] = i['href']
         movie_details["links"] = final_links
     return movie_details

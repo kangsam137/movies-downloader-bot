@@ -53,25 +53,3 @@ def get_movie(query):
             final_links[i.text] = i['href']
         movie_details["links"] = final_links
     return movie_details
-
-
-# Main function
-def main():
-    query = input("Enter movie search query: ")
-    movies_list = search_movies(query)
-    if movies_list:
-        print("Found movies:")
-        for movie in movies_list:
-            print(f"{movie['id']}: {movie['title']}")
-        movie_id = input("Enter the movie ID to get details: ")
-        movie_details = get_movie(movie_id)
-        if movie_details:
-            upload_movie(movie_details)
-        else:
-            print("Invalid movie ID.")
-    else:
-        print("No movies found.")
-
-
-if __name__ == '__main__':
-    main()

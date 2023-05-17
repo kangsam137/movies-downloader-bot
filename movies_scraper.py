@@ -25,23 +25,23 @@ def upload_movie(movie_details):
 # Function to search for movies
 def search_movies(query):
     movies_list = []
-    website = BeautifulSoup(requests.get(f"https://185.53.88.104/?s={query.replace(' ', '+')}", verify=False).text,
-                            "html.parser")
+    movies_details = {}
+    website = BeautifulSoup(requests.get(f"https://185.53.88.104/?s={query.replace(' ', '+')}").text, "html.parser")
     movies = website.find_all("a", {'class': 'ml-mask jt'})
     for movie in movies:
-        movie_details = {}
         if movie:
-            movie_details["id"] = f"link{movies.index(movie)}"
-            movie_details["title"] = movie.find("span", {'class': 'mli-info'}).text
-            movie_details["url"] = movie['href']
-            movies_list.append(movie_details)
+            movies_details["id"] = f"link{movies.index(movie)}"
+            movies_details["title"] = movie.find("span", {'class': 'mli-info'}).text
+            url_list[movies_details["id"]] = movie['href']
+        movies_list.append(movies_details)
+        movies_details = {}
     return movies_list
 
 
 # Function to get movie details
 def get_movie(query):
     movie_details = {}
-    website = BeautifulSoup(requests.get(f"https://185.53.88.104/?s={query.replace(' ', '+')}").text, "html.parser"
+    movie_page_link = BeautifulSoup(requests.get(f"{url_list[query]}").text, "html.parser")
     if movie_page_link:
         title = movie_page_link.find("div", {'class': 'mvic-desc'}).h3.text
         movie_details["title"] = title

@@ -41,7 +41,7 @@ def search_movies(query):
 # Function to get movie details
 def get_movie(query):
     movie_details = {}
-    movie_page_link = BeautifulSoup(requests.get(url_list[query], verify=False).text, "html.parser")
+    website = BeautifulSoup(requests.get(f"https://185.53.88.104/?s={query.replace(' ', '+')}").text, "html.parser"
     if movie_page_link:
         title = movie_page_link.find("div", {'class': 'mvic-desc'}).h3.text
         movie_details["title"] = title

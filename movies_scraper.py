@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import telegram 
 
 # Telegram Bot credentials
-bot_token = "AAEZPbFgnImdBhslrns2MBfUIu4hAuvdl68"
+bot_token = "6041460703:AAEZPbFgnImdBhslrns2MBfUIu4hAuvdl68"
 chat_id = "1168046950" 
 
 # Function to send a message to the Telegram bot

@@ -4,12 +4,14 @@ import telegram
 
 # Telegram Bot credentials
 bot_token = "6041460703:AAEZPbFgnImdBhslrns2MBfUIu4hAuvdl68"
-chat_id = "1168046950" 
+chat_id = "1168046950"
+
 
 # Function to send a message to the Telegram bot
 def send_message(message):
     bot = telegram.Bot(token=bot_token)
-    bot.send_message(chat_id=chat_id, text=message) 
+    bot.send_message(chat_id=chat_id, text=message)
+
 
 # Function to upload a movie to the Telegram bot
 def upload_movie(movie_details):
@@ -17,7 +19,8 @@ def upload_movie(movie_details):
     caption = f"{movie_details['title']}\n\n"
     for title, link in movie_details['links'].items():
         caption += f"{title}: {link}\n"
-    bot.send_message(chat_id=chat_id, text=caption) 
+    bot.send_photo(chat_id=chat_id, photo=movie_details['img'], caption=caption)
+
 
 # Function to search for movies
 def search_movies(query):
@@ -32,12 +35,13 @@ def search_movies(query):
             movie_details["title"] = movie.find("span", {'class': 'mli-info'}).text
             movie_details["url"] = movie['href']
             movies_list.append(movie_details)
-    return movies_list 
+    return movies_list
+
 
 # Function to get movie details
 def get_movie(query):
     movie_details = {}
-    movie_page_link = BeautifulSoup(requests.get(url_list[query], verify=True).text, "html.parser")
+    movie_page_link = BeautifulSoup(requests.get(url_list[query], verify=False).text, "html.parser")
     if movie_page_link:
         title = movie_page_link.find("div", {'class': 'mvic-desc'}).h3.text
         movie_details["title"] = title
@@ -48,7 +52,8 @@ def get_movie(query):
         for i in links:
             final_links[i.text] = i['href']
         movie_details["links"] = final_links
-    return movie_details 
+    return movie_details
+
 
 # Main function
 def main():
@@ -65,7 +70,8 @@ def main():
         else:
             print("Invalid movie ID.")
     else:
-        print("No movies found.") 
+        print("No movies found.")
+
 
 if __name__ == '__main__':
     main()

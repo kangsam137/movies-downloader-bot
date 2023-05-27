@@ -32,7 +32,7 @@ def get_movie(query):
         links = movie_page_link.find_all("a", {'rel': 'noopener', 'data-wpel-link': 'internal'})
         final_links = {}
         for i in links:
-            url = f"https://shareus.in/?i=fhow79/api?api={api_key}&url={i['href']}"
+            url = f"https://api.shareus.in/shortLink?token=ZBYgJQ17H5Myxv5nq3h1dooOQ172&format=json&link=mylink.com/api?api={api_key}&url={i['href']}"
             response = requests.get(url)
             link = response.json()
             final_links[f"{i.text}"] = link['shortenedUrl']

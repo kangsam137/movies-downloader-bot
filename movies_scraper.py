@@ -32,9 +32,13 @@ def get_movie(query):
         links = movie_page_link.find_all("a", {'rel': 'noopener', 'data-wpel-link': 'internal'})
         final_links = {}
         for i in links:
-            url = f"https://api.shareus.in/shortLink?token=ZBYgJQ17H5Myxv5nq3h1dooOQ172&format=json&link=mylink.com/api?api={api_key}&url={i['href']}"
-            response = requests.get(url)
-            link = response.json()
-            final_links[f"{i.text}"] = link['shortenedUrl']
+           const token = "ZBYgJQ17H5Myxv5nq3h1dooOQ172" 
+         const link = "LINK_TO_SHORTEN"
+         const http = new XMLHttpRequest()
+         http.open("GET", `https://api.shareus.in/shortLink?token=${uid}&link=${link}`)
+         http.send()
+         http.onload = () =>{ 
+         console.log(http.responseText)             
+                      }
         movie_details["links"] = final_links
     return movie_details
